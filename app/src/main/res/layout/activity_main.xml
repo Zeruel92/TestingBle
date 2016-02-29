@@ -10,16 +10,32 @@
     tools:context="it.pspgt.ble.testingble.MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Schiacciando il tasto verrà inviata una stringa alla Nucleo"
-        android:id="@+id/textView" />
+        android:text="Schiacciando il tasto verrà inviata una stringa alla Nucleo" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Invia!"
-        android:id="@+id/button"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:text="Invia!" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button"
+        android:text="Accendi" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_toEndOf="@+id/button2"
+        android:text="Spegni" />
 </RelativeLayout>
