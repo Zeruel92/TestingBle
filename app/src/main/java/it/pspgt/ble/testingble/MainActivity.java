@@ -36,20 +36,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         b2.setOnClickListener(this);
         bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         bluetoothAdapter = bluetoothManager.getAdapter();
-        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, 1);
-        }
-        ArrayList<ScanFilter> filterList=new ArrayList<ScanFilter>();
-        filterList.add(new ScanFilter.Builder().setDeviceName("Nucleo BLE").build());
-        scannerCallback=new ScanLE(this.getApplicationContext());
-        ScanSettings settings=new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).build();
-        scanner= bluetoothAdapter.getBluetoothLeScanner();
-        scanner.startScan(filterList,settings, scannerCallback);
     }
     @Override
     protected void onResume(){
         super.onResume();
+        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, 1);
+        } else {
+            ArrayList<ScanFilter> filterList = new ArrayList<ScanFilter>();
+            filterList.add(new ScanFilter.Builder().setDeviceName("Nucleo BLE").build());
+            scannerCallback = new ScanLE(this.getApplicationContext());
+            ScanSettings settings = new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).build();
+            scanner = bluetoothAdapter.getBluetoothLeScanner();
+            scanner.startScan(filterList, settings, scannerCallback);
+        }
     }
     @Override
     protected void onPause(){
