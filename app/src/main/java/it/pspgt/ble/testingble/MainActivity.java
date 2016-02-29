@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause(){
         super.onPause();
+        if (bluetoothAdapter != null && bluetoothAdapter.isEnabled())
         scanner.stopScan(scannerCallback);
     }
 
