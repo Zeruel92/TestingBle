@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivityForResult(enableBtIntent, 1);
         } else {
             ArrayList<ScanFilter> filterList = new ArrayList<ScanFilter>();
-            filterList.add(new ScanFilter.Builder().setDeviceName("Nucleo BLE").build());
+            filterList.add(new ScanFilter.Builder().setDeviceName("Nucleo Server").build());
             scannerCallback = new ScanLE(this.getApplicationContext());
             ScanSettings settings = new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).build();
             scanner = bluetoothAdapter.getBluetoothLeScanner();
